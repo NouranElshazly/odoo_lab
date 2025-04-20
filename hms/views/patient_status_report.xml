@@ -1,0 +1,33 @@
+<odoo>
+    <template id="patient_status_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="patient">
+                <div class="page">
+                    <h2>Patient Status Report</h2>
+                    <p><strong>Birth Date:</strong> <t t-esc="patient.birth_date"/></p>
+                    <p><strong>PCR:</strong> <t t-esc="patient.pcr"/></p>
+                    <p><strong>Blood Type:</strong> <t t-esc="patient.blood_type"/></p>
+                    <p><strong>Email:</strong> <t t-esc="patient.email"/></p>
+                    <p><strong>Name:</strong> <t t-esc="patient.name"/></p>
+                    <p><strong>Age:</strong> <t t-esc="patient.age"/></p>
+                    <p><strong>Department:</strong> <t t-esc="patient.department_id.name"/></p>
+                    <p><strong>Doctors:</strong> 
+                        <t t-foreach="patient.doctor_ids" t-as="doc">
+                            <t t-esc="doc.name"/><span t-if="not loop.last">, </span>
+                        </t>
+                    </p>
+                </div>
+            </t>
+        </t>
+    </template>
+     <report
+        id="patient_status_report_action"
+        model="hms.patient"
+        string="Patient Status Report"
+        report_type="qweb-pdf"
+        name="hms.patient_status_report"
+        file="hms.patient_status_report"
+        print_report_name="'Patient Status - %s' % (object.name)"
+    />
+    
+</odoo>

@@ -1,0 +1,48 @@
+<odoo>
+    <menuitem id="menu_hms_root" name="Hospital Management"/>
+
+    <menuitem id="menu_hms_department" name="Departments" parent="menu_hms_root" sequence="1"/>
+    <menuitem id="menu_hms_doctor" name="Doctors" parent="menu_hms_root" sequence="2"/>
+    <menuitem id="menu_hms_patient" name="Patients" parent="menu_hms_root" sequence="3"/>
+    <menuitem id="menu_hms_customer" name="Customer" parent="menu_hms_root" sequence="4"/>
+    <menuitem id="menu_hms_report" name="Report" parent="menu_hms_root" sequence="5"/>
+
+    <record id="action_hms_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">hms.department</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_hms_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hms.doctor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_hms_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hms.patient</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_hms_customer" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'show_hms': True}</field>
+    </record>
+
+    <record id="action_hms_report" model="ir.actions.act_window">
+        <field name="name">Reports</field>
+        <field name="res_model">hms.patient</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'show_hms': True}</field>
+    </record>
+
+
+    <menuitem id="submenu_hms_department" parent="menu_hms_department" action="action_hms_department"/>
+    <menuitem id="submenu_hms_doctor" parent="menu_hms_doctor" action="action_hms_doctor"/>
+    <menuitem id="submenu_hms_patient" parent="menu_hms_patient" action="action_hms_patient"/>
+    <menuitem id="submenu_hms_customer" parent="menu_hms_customer" action="action_hms_customer"/>
+    <menuitem id="submenu_hms_patient_report" parent="menu_hms_report" action="action_hms_report"/>
+
+</odoo>

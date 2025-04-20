@@ -1,0 +1,52 @@
+<odoo>
+    <record id="view_hms_patient_form" model="ir.ui.view">
+        <field name="name">hms.patient.form</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="first_name"/>
+                        <field name="last_name"/>
+                        <field name="birth_date"/>
+                        <field name="age" readonly="1"/>
+                        <field name="cr_ratio"/>
+                        <field name="blood_type"/>
+                        <field name="pcr"/>
+                        <field name="state"/>
+                        <field name="department_id"/>
+                        <field name="doctor_ids" widget="many2many_tags" readonly="department_id == '0' "/>
+                        <field name="image"/>
+                        <field name="address"/>
+                        <field name="history"/>
+                    </group>
+                    <notebook>
+                        <page string="Logs">
+                            <field name="log_ids">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="created_by"/>
+                                    <field name="description"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hms_patient_tree" model="ir.ui.view">
+        <field name="name">patient page</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="age"/>
+                <field name="state"/>
+                <field name="department_id"/>
+            </list>
+        </field>
+    </record>
+</odoo>
